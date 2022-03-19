@@ -33,6 +33,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_home, container, false);
         init();
+        listView();
         return viewGroup;
     }
 
@@ -42,6 +43,7 @@ public class HomeFragment extends Fragment {
 //        transactions.add(new Transaction())
     }
 
+    //List View untuk memanggil list view
     ListView lvDaftarTransaksi;
     TransactionsAdapter transactionsAdapter;
     private void listView(){

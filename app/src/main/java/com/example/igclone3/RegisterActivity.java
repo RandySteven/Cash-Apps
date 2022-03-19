@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.igclone3.controller.UserController;
+import com.example.igclone3.model.User;
+
 public class RegisterActivity extends AppCompatActivity {
 
     @Override
@@ -20,11 +23,12 @@ public class RegisterActivity extends AppCompatActivity {
 
     EditText etUserName, etUserEmail, etUserPassword;
     Button btnRegister;
+    DataHelper dataHelper;
     private void init(){
         etUserName = findViewById(R.id.etUserName);
         etUserEmail = findViewById(R.id.etUserEmail);
         etUserPassword = findViewById(R.id.etUserPassword);
-
+        dataHelper = new DataHelper(getApplicationContext());
         btnRegister = findViewById(R.id.btnRegister);
     }
 
@@ -35,6 +39,10 @@ public class RegisterActivity extends AppCompatActivity {
                 String userName = etUserName.getText().toString();
                 String userEmail = etUserEmail.getText().toString();
                 String userPassword = etUserPassword.getText().toString();
+
+                User user = UserController.createUser(userName, userEmail, userPassword);
+
+                System.out.println(dataHelper.registerUser(user));
 
                 Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                 intent.putExtra("userName", userName);
